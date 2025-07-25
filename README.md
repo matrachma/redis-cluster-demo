@@ -92,8 +92,19 @@ When a master node goes down, the Redis cluster automatically promotes one of it
     ```
 
 ## 📁 Project Structure
+```
+.
+├── docker-compose.yml        # Orchestrates all services (Redis nodes and client apps).
+├── php-app/
+│   ├── composer.json         # Defines the PHP dependency (predis/predis).
+│   ├── Dockerfile            # Instructions to build the PHP application container.
+│   └── index.php             # PHP script that connects to the cluster and handles failover.
+└── python-app/
+    ├── app.py                # Python script that connects to the cluster and handles failover.
+    ├── Dockerfile            # Instructions to build the Python application container.
+    └── requirements.txt      # Defines the Python dependency (redis).
+```
 
-.├── docker-compose.yml        # Orchestrates all services (Redis nodes and client apps).├── php-app/│   ├── composer.json         # Defines the PHP dependency (predis/predis).│   ├── Dockerfile            # Instructions to build the PHP application container.│   └── index.php             # PHP script that connects to the cluster and handles failover.└── python-app/├── app.py                # Python script that connects to the cluster and handles failover.├── Dockerfile            # Instructions to build the Python application container.└── requirements.txt      # Defines the Python dependency (redis).
 ## 🧹 Cleanup
 
 To stop and remove all the containers, networks, and volumes created by this project, run the following command from the project's root directory:
